@@ -1,0 +1,320 @@
+Thread rank: 0
+Thread rank: 2
+Thread rank: 5
+Thread rank: 1
+Thread rank: 6
+Thread rank: 4
+Thread rank: 3
+Thread rank: 7
+pi is approximately 3.1415926542565304, Error is 0.0000000006667373
+Computed in 1.129 seconds
+Thread rank: 0
+Thread rank: 1
+Thread rank: 5
+Thread rank: 4
+Thread rank: 3
+Thread rank: 7
+Thread rank: 2
+Thread rank: 6
+pi is approximately 3.1415926542565313, Error is 0.0000000006667382
+Computed in 1.13 seconds
+Thread rank: 5
+Thread rank: 0
+Thread rank: 4
+Thread rank: 7
+Thread rank: 1
+Thread rank: 3
+Thread rank: 2
+Thread rank: 6
+pi is approximately 3.1415926542565304, Error is 0.0000000006667373
+Computed in 1.14 seconds
+Thread rank: 0
+Thread rank: 5
+Thread rank: 1
+Thread rank: 3
+Thread rank: 7
+Thread rank: 2
+Thread rank: 6
+Thread rank: 4
+pi is approximately 3.1415926542565313, Error is 0.0000000006667382
+Computed in 1.141 seconds
+Thread rank: 0
+Thread rank: 1
+Thread rank: 2
+Thread rank: 6
+Thread rank: 5
+Thread rank: 4
+Thread rank: 3
+Thread rank: 7
+pi is approximately 3.1415926542565304, Error is 0.0000000006667373
+Computed in 1.14 seconds
+Thread rank: 0
+Thread rank: 4
+Thread rank: 1
+Thread rank: 2
+Thread rank: 6
+Thread rank: 7
+Thread rank: 3
+Thread rank: 5
+pi is approximately 3.1415926542565304, Error is 0.0000000006667373
+Computed in 1.139 seconds
+Thread rank: 1
+Thread rank: 0
+Thread rank: 3
+Thread rank: 2
+Thread rank: 7
+Thread rank: 6
+Thread rank: 4
+Thread rank: 5
+pi is approximately 3.1415926542565313, Error is 0.0000000006667382
+Computed in 1.14 seconds
+Thread rank: 0
+Thread rank: 6
+Thread rank: 1
+Thread rank: 5
+Thread rank: 4
+Thread rank: 2
+Thread rank: 3
+Thread rank: 7
+pi is approximately 3.1415926542565304, Error is 0.0000000006667373
+Computed in 1.14 seconds
+Thread rank: 0
+Thread rank: 5
+Thread rank: 1
+Thread rank: 6
+Thread rank: 2
+Thread rank: 3
+Thread rank: 7
+Thread rank: 4
+pi is approximately 3.1415926542565304, Error is 0.0000000006667373
+Computed in 1.14 seconds
+Thread rank: 0
+Thread rank: 5
+Thread rank: 4
+Thread rank: 3
+Thread rank: 7
+Thread rank: 2
+Thread rank: 6
+Thread rank: 1
+pi is approximately 3.1415926542565304, Error is 0.0000000006667373
+Computed in 1.14 seconds
+Thread rank: 0
+Thread rank: 2
+Thread rank: 4
+Thread rank: 1
+Thread rank: 7
+Thread rank: 5
+Thread rank: 6
+Thread rank: 3
+pi is approximately 3.1415926542565313, Error is 0.0000000006667382
+Computed in 1.141 seconds
+Thread rank: 0
+Thread rank: 5
+Thread rank: 4
+Thread rank: 1
+Thread rank: 3
+Thread rank: 7
+Thread rank: 2
+Thread rank: 6
+pi is approximately 3.1415926542565313, Error is 0.0000000006667382
+Computed in 1.14 seconds
+Thread rank: 0
+Thread rank: 6
+Thread rank: 5
+Thread rank: 1
+Thread rank: 4
+Thread rank: 2
+Thread rank: 7
+Thread rank: 3
+pi is approximately 3.1415926542565304, Error is 0.0000000006667373
+Computed in 1.141 seconds
+Thread rank: 0
+Thread rank: 5
+Thread rank: 1
+Thread rank: 4
+Thread rank: 2
+Thread rank: 6
+Thread rank: 3
+Thread rank: 7
+pi is approximately 3.1415926542565304, Error is 0.0000000006667373
+Computed in 1.141 seconds
+Thread rank: 0
+Thread rank: 1
+Thread rank: 5
+Thread rank: 4
+Thread rank: 3
+Thread rank: 7
+Thread rank: 6
+Thread rank: 2
+pi is approximately 3.1415926542565313, Error is 0.0000000006667382
+Computed in 1.141 seconds
+Thread rank: 0
+Thread rank: 1
+Thread rank: 6
+Thread rank: 4
+Thread rank: 5
+Thread rank: 7
+Thread rank: 3
+Thread rank: 2
+pi is approximately 3.1415926542565304, Error is 0.0000000006667373
+Computed in 1.143 seconds
+Thread rank: 1
+Thread rank: 0
+Thread rank: 5
+Thread rank: 7
+Thread rank: 4
+Thread rank: 3
+Thread rank: 2
+Thread rank: 6
+pi is approximately 3.1415926542565313, Error is 0.0000000006667382
+Computed in 1.159 seconds
+Thread rank: 4
+Thread rank: 5
+Thread rank: 3
+Thread rank: 1
+Thread rank: 0
+Thread rank: 6
+Thread rank: 7
+Thread rank: 2
+pi is approximately 3.1415926542565313, Error is 0.0000000006667382
+Computed in 1.154 seconds
+Thread rank: 4
+Thread rank: 0
+Thread rank: 1
+Thread rank: 5
+Thread rank: 2
+Thread rank: 6
+Thread rank: 7
+Thread rank: 3
+pi is approximately 3.1415926542565304, Error is 0.0000000006667373
+Computed in 1.154 seconds
+Thread rank: 5
+Thread rank: 7
+Thread rank: 3
+Thread rank: 4
+Thread rank: 6
+Thread rank: 1
+Thread rank: 0
+Thread rank: 2
+pi is approximately 3.1415926542565304, Error is 0.0000000006667373
+Computed in 1.156 seconds
+Thread rank: 0
+Thread rank: 6
+Thread rank: 3
+Thread rank: 2
+Thread rank: 7
+Thread rank: 4
+Thread rank: 5
+Thread rank: 1
+pi is approximately 3.1415926542565313, Error is 0.0000000006667382
+Computed in 1.158 seconds
+Thread rank: 0
+Thread rank: 3
+Thread rank: 2
+Thread rank: 6
+Thread rank: 5
+Thread rank: 1
+Thread rank: 4
+Thread rank: 7
+pi is approximately 3.1415926542565304, Error is 0.0000000006667373
+Computed in 1.157 seconds
+Thread rank: 1
+Thread rank: 2
+Thread rank: 0
+Thread rank: 5
+Thread rank: 4
+Thread rank: 6
+Thread rank: 7
+Thread rank: 3
+pi is approximately 3.1415926542565304, Error is 0.0000000006667373
+Computed in 1.158 seconds
+Thread rank: 0
+Thread rank: 6
+Thread rank: 7
+Thread rank: 1
+Thread rank: 5
+Thread rank: 4
+Thread rank: 3
+Thread rank: 2
+pi is approximately 3.1415926542565304, Error is 0.0000000006667373
+Computed in 1.158 seconds
+Thread rank: 1
+Thread rank: 0
+Thread rank: 7
+Thread rank: 4
+Thread rank: 3
+Thread rank: 2
+Thread rank: 6
+Thread rank: 5
+pi is approximately 3.1415926542565304, Error is 0.0000000006667373
+Computed in 1.158 seconds
+Thread rank: 3
+Thread rank: 6
+Thread rank: 0
+Thread rank: 1
+Thread rank: 5
+Thread rank: 4
+Thread rank: 7
+Thread rank: 2
+pi is approximately 3.1415926542565304, Error is 0.0000000006667373
+Computed in 1.158 seconds
+Thread rank: 0
+Thread rank: 5
+Thread rank: 1
+Thread rank: 4
+Thread rank: 2
+Thread rank: 6
+Thread rank: 7
+Thread rank: 3
+pi is approximately 3.1415926542565304, Error is 0.0000000006667373
+Computed in 1.158 seconds
+Thread rank: 0
+Thread rank: 1
+Thread rank: 7
+Thread rank: 2
+Thread rank: 6
+Thread rank: 3
+Thread rank: 4
+Thread rank: 5
+pi is approximately 3.1415926542565304, Error is 0.0000000006667373
+Computed in 1.159 seconds
+Thread rank: 0
+Thread rank: 2
+Thread rank: 7
+Thread rank: 3
+Thread rank: 6
+Thread rank: 1
+Thread rank: 5
+Thread rank: 4
+pi is approximately 3.1415926542565304, Error is 0.0000000006667373
+Computed in 1.159 seconds
+Thread rank: 0
+Thread rank: 6
+Thread rank: 4
+Thread rank: 2
+Thread rank: 3
+Thread rank: 1
+Thread rank: 7
+Thread rank: 5
+pi is approximately 3.1415926542565304, Error is 0.0000000006667373
+Computed in 1.159 seconds
+Thread rank: 0
+Thread rank: 6
+Thread rank: 2
+Thread rank: 3
+Thread rank: 1
+Thread rank: 7
+Thread rank: 4
+Thread rank: 5
+pi is approximately 3.1415926542565313, Error is 0.0000000006667382
+Computed in 1.16 seconds
+Thread rank: 7
+Thread rank: 0
+Thread rank: 3
+Thread rank: 1
+Thread rank: 2
+Thread rank: 5
+Thread rank: 6
+Thread rank: 4
+pi is approximately 3.1415926542565304, Error is 0.0000000006667373
+Computed in 1.171 seconds

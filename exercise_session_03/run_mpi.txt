@@ -1,0 +1,6 @@
+Process rank: 0
+pi is approximately 3.1415926555897684, Error is 0.0000000019999753
+Computed in 0.3711 seconds
+Process rank: 1
+Process rank: 2
+Process rank: 3

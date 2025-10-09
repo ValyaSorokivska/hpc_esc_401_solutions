@@ -12,7 +12,7 @@ typedef struct {
 } coord;
 
 int main(int argc, char *argv[]) {
-    const int N = 1024*1024*256;
+    long N = (argc > 1) ? atol(argv[1]) : (long)1024*1024*64; 
     coord *data;
     int i;
     double sum;

@@ -3,15 +3,15 @@
 #include <mpi.h>
 #include "gettime.h"
 
-static long   nSteps = 100000000;                // 1e8 steps; adjust if needed
+static long   nSteps = 100000000;               
 static double PI25DT = 3.141592653589793238462643;
 
 int main(int argc, char **argv)
 {
-    double prog0 = getTime();                    // total program start
+    double prog0 = getTime();                    
 
     MPI_Init(&argc, &argv);
-    double mpi0  = getTime();                    // MPI-only start
+    double mpi0  = getTime();                   
 
     int rank, size;
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
@@ -29,9 +29,9 @@ int main(int argc, char **argv)
     double global_sum = 0.0;
     MPI_Reduce(&sum, &global_sum, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 
-    double mpi1  = getTime();                    // MPI-only end
+    double mpi1  = getTime();                    
     MPI_Finalize();
-    double prog1 = getTime();                    // total program end
+    double prog1 = getTime();                   
 
     if (rank == 0) {
         double pi = h * global_sum;

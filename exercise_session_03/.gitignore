@@ -1,0 +1,7 @@
+sum_O0
+sum_O1
+sum_O2
+sum_O3
+*.o
+*.log
+*.bak

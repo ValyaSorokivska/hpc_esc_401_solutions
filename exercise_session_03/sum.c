@@ -12,8 +12,9 @@ typedef struct {
 } coord;
 
 int main(int argc, char *argv[]) {
+    (void)argc; (void)argv;   
     long N = (argc > 1) ? atol(argv[1]) : (long)1024*1024*64; 
-    coord *data;
+    coord *data=malloc((size_t)N * sizeof(coord));
     int i;
     double sum;
     
@@ -31,6 +32,9 @@ int main(int argc, char *argv[]) {
         sum += sqrt(data[i].r2);
     }
     double t1 = getTime();    
-    printf("sum=%f\n", sum);
+    printf("sum=%.6f\n", sum);
+    printf("Computed in %.6f seconds (N=%ld)\n", t1 - t0, N);
+
+    free(data);
     return 0;
 }

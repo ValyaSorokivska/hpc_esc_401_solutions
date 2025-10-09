@@ -5,3 +5,4 @@ sum_O3
 *.o
 *.log
 *.bak
+sum_omp

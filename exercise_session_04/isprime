@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-start_ns=$(date +%s%N)
+SECONDS=0
 err() { echo "ERROR: $*" >&2; exit 2; }
 
 
@@ -37,4 +37,4 @@ else
 fi
 
 end_ns=$(date +%s%N)
-printf 'Elapsed: %.3f s\n' "$(echo "($end_ns-$start_ns)/1e9" | bc -l)"
+echo "Elapsed: ${SECONDS}s"

@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+err() { echo "ERROR: $*" >&2; exit 2; }
+
+[[ $# -eq 1 ]] || err "Usage: $0 <positive integer>"
+
+n="$1"
+
+if ! [[ "$n" =~ ^[0-9]+$ ]]; then
+  err "The given input is not a number: $n"
+fi
+
+if (( n <= 0 )); then
+  err "The given input is not a positive integer: $n"
+fi
+
+if (( n == 1 )); then
+  echo "1 is not prime"
+  exit 0
+fi
+
+out="$(factor "$n")"            
+fields="$(awk '{print NF}' <<<"$out")"
+
+if (( fields == 2 )); then
+  echo "$n is prime"
+else
+  echo "$n is composite"
+fi
+
+if [[ "${MEASURE:-0}" == 1 ]]; then
+fi

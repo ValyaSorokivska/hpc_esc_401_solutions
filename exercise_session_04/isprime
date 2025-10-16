@@ -6,7 +6,7 @@ timer_start()  { _t0_ns=$(date +%s%N); }
 timer_elapsed() {
   local t1_ns=$(date +%s%N)
   # requires 'bc' (already available on Eiger)
-  echo "Elapsed: $(echo "scale=3; ($t1_ns-$_t0_ns)/1e9" | bc) s"
+  awk -v t0="$_t0_ns" -v t1="$t1_ns" 'BEGIN{printf "Elapsed: %.3f s\n", (t1-t0)/1e9}'
 }
 
 

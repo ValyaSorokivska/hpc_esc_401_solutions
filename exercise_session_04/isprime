@@ -37,11 +37,6 @@ fi
 out="$(factor "$n")"         
 fields="$(awk '{print NF}' <<<"$out")"
 
-if (( fields == 2 )); then
-  echo "$n is prime"
-else
-  echo "$n is composite"
-fi
 
 timer_start
 out="$(factor "$n")"

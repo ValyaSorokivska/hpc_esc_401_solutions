@@ -9,8 +9,12 @@ err() { echo "ERROR: $*" >&2; exit 2; }
 
 n="$1"
 
-if ! [[ "$n" =~ ^-?[0-9]+$ ]]; then
+if ! [[ "$n" =~ ^-?[0-9]+([.][0-9]+)?$ ]]; then
   err "The given input is not a number: $n"
+fi
+
+if [[ "$n" =~ \. ]]; then
+  err "The given input is not a positive integer: $n"
 fi
 
 if (( n <= 0 )); then

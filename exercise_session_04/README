@@ -1,0 +1,71 @@
+Exercise 1
+------------
+
+Paths:
+1. HOME=/users/vsorokiv
+2. SCRATCH=/capstor/scratch/cscs/vsorokiv
+
+My  permissions  of HOME and SCRATCH are:
+drwx------ 700 vsorokiv:uzh8 /users/vsorokiv
+drwxr-x--- 750 vsorokiv:uzh8 /capstor/scratch/cscs/vsorokiv
+So my HOME is private and SCRATCH is  for group.
+
+I cannot access other users' HOME and  I also cannot read exam solutions.
+ls: cannot access '/users/meberlei/exam_solutions.txt': Permission denied
+drwx------ 2 meberlei uzh8 4096 жов 15 11:28 /users/meberlei
+
+Group_note.txt is -rw-rw---- (660) and the directory allows the group to create/replace files (770).
+echo "hello group" > group_note.txt
+chgrp uzh8 group_note.txt
+chmod 660 group_note.txt         
+chmod 770 $SCRATCH               
+
+
+Default starting permissions for files are 666 (read & write for everyone) and for directories are  777 (read, write & execute for everyone)
+
+With 000 nobody can read/write/execute (not even the owner).  The data is not lost, as owner I restored access with chmod 600 and read the file.
+echo "secret" > locked.txt
+chmod 000 locked.txt
+ls -l locked.txt  # ---------- (000)
+chmod 600 locked.txt
+cat locked.txt    # "secret"
+
+
+Exercise 2
+-----------
+1.1. end with 00
+command: grep -E '^[01]*00$' binary.tx
+examples of regular expressions:0000000000000000, 0000000000001100, 0000000000010100
+
+1.2. start and  end with 1
+command:grep -E '^1([01]*1)?$' binary.txt
+examples of regular expressions:  1000001111110011, 1011111111110001
+
+1.3. contain the pattern 110
+command:  grep -E '110' binary.txt
+examples of regular expressions:0000000000000110, 0000000000001100, 0000000000001110
+
+1.4. contain at least three times a 1
+command:grep -E  '^[01]*1[01]*1[01]*1[01]*$' binary.txt
+examples of regular expressions: 0000000000000111, 0000000000001110, 0000000000001111
+
+1.5. contain at least  three consecutive 1s
+command: grep -E '^[01]*111[01]*$' binary.txt
+examples of regular expressions: 0000000000000111, 0000000000001110, 0000000000001111
+
+2 In a directoty measured there is  a file out.txt where ie all temperatures from  measured/measurements*.txt. The avarage temperature is 20.576 degrees.
+
+
+Exercise 3
+----------
+factor 20 ---- 20: 2 2 5
+factor 31 ---- 31: 31
+
+Using factor and wc keeps the script short and robust. Input checks prevent crashes.
+
+For big numbers with time function:
+1. 4230283 is prime. Elapsed: 0.007 s
+2. 4572862171001 is prime. Elapsed: 0.007 s
+
+
+

@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-SECONDS=0
+timer_start() { _t0_ns=$(date +%s%N); } 
 err() { echo "ERROR: $*" >&2; exit 2; }
 
 
@@ -36,5 +36,7 @@ else
   echo "$n is composite"
 fi
 
-end_ns=$(date +%s%N)
-echo "Elapsed: ${SECONDS}s"
+timer_elapsed() {                         
+  local t1_ns=$(date +%s%N)
+  echo "Elapsed: $(echo "scale=3; ($t1_ns-$_t0_ns)/1e9" | bc) s"
+}

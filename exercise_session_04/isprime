@@ -2,6 +2,7 @@
 
 set -euo pipefail
 
+start_ns=$(date +%s%N)
 err() { echo "ERROR: $*" >&2; exit 2; }
 
 
@@ -34,3 +35,6 @@ if (( fields == 2 )); then
 else
   echo "$n is composite"
 fi
+
+end_ns=$(date +%s%N)
+printf 'Elapsed: %.3f s\n' "$(echo "($end_ns-$start_ns)/1e9" | bc -l)"

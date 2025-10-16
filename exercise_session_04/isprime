@@ -2,7 +2,14 @@
 
 set -euo pipefail
 
-timer_start() { _t0_ns=$(date +%s%N); } 
+timer_start()  { _t0_ns=$(date +%s%N); }
+timer_elapsed() {
+  local t1_ns=$(date +%s%N)
+  # requires 'bc' (already available on Eiger)
+  echo "Elapsed: $(echo "scale=3; ($t1_ns-$_t0_ns)/1e9" | bc) s"
+}
+
+
 err() { echo "ERROR: $*" >&2; exit 2; }
 
 
@@ -36,7 +43,14 @@ else
   echo "$n is composite"
 fi
 
-timer_elapsed() {                         
-  local t1_ns=$(date +%s%N)
-  echo "Elapsed: $(echo "scale=3; ($t1_ns-$_t0_ns)/1e9" | bc) s"
-}
+timer_start
+out="$(factor "$n")"
+fields="$(awk '{print NF}' <<<"$out")"
+
+if (( fields == 2 )); then
+  echo "$n is prime"
+else
+  echo "$n is composite"
+fi
+
+timer_elapsed

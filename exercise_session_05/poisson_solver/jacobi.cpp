@@ -1,5 +1,7 @@
 #include "jacobi.h"
 #include <math.h>
+#include <cmath>
+#include <omp.h>
 
 /**
  * @brief      Computes norm of the difference between two matrices
@@ -60,3 +62,17 @@ void jacobi_step(params p, double** u_new, double** u_old, double** f){
         }
     }
 }}
+double norm_diff(params p, double** mat1, double** mat2){
+    const double denom = double(p.nx) * double(p.ny);
+    double sum = 0.0;
+
+    #pragma omp parallel for collapse(2) reduction(+:sum) schedule(static)
+    for (int i = 0; i < p.nx; ++i){
+        for (int j = 0; j < p.ny; ++j){
+            const double d = mat1[i][j] - mat2[i][j];
+            sum += d * d;
+        }
+    }
+    return std::sqrt(sum / denom);
+}
+

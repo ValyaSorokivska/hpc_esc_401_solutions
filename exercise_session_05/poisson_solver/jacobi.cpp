@@ -59,4 +59,4 @@ void jacobi_step(params p, double** u_new, double** u_old, double** f){
                           - f[i][j] ) / denom;
         }
     }
-}
+}}

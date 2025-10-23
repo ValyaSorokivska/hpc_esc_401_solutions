@@ -1,8 +1,12 @@
 #ifndef INIT_H
 #define INIT_H
+#pragma once
+
 
 #include <iostream>
 #include <cmath>
+
+void init_f(double* u, double* f, int N, int problem_id);
 
 struct params {
     // Which source term to use (1 or 2)

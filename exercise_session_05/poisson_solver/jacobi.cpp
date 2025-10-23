@@ -13,16 +13,17 @@
  * @return     Returns \sqrt{\sum(mat1_{ij} - mat2_{ij})^2/(nx*ny)}
  */
 double norm_diff(params p, double** mat1, double** mat2){
-    double acc = 0.0;
     const double denom = double(p.nx) * double(p.ny);
+    double sum = 0.0;
 
+    #pragma omp parallel for collapse(2) reduction(+:sum) schedule(static)
     for (int i = 0; i < p.nx; ++i){
         for (int j = 0; j < p.ny; ++j){
-            double d = mat1[i][j] - mat2[i][j];
-            acc += d * d;
+            const double d = mat1[i][j] - mat2[i][j];
+            sum += d * d;
         }
     }
-    return sqrt(acc / denom);
+    return std::sqrt(sum / denom);
 }
 
 /**
@@ -72,17 +73,3 @@ void jacobi_step(params p, double** u_new, double** u_old, double** f){
         }
     } 
 }
-double norm_diff(params p, double** mat1, double** mat2){
-    const double denom = double(p.nx) * double(p.ny);
-    double sum = 0.0;
-
-    #pragma omp parallel for collapse(2) reduction(+:sum) schedule(static)
-    for (int i = 0; i < p.nx; ++i){
-        for (int j = 0; j < p.ny; ++j){
-            const double d = mat1[i][j] - mat2[i][j];
-            sum += d * d;
-        }
-    }
-    return std::sqrt(sum / denom);
-}
-

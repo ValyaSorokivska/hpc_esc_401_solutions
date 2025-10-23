@@ -20,6 +20,8 @@ int main (int argc, char *argv[]){
 
     // Initialize the value of matrices
     init_variables(p, f, u_old, u_new);
+    write_csv("output/output_source.csv", f, p.nx, p.ny);
+
 
     // Output the source term of the Poisson equation in a csv file
     output_source(p, f);

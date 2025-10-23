@@ -1,10 +1,18 @@
-CFLAGS=-O3 -ffast-math -mavx2
-CC=CC
+CXX       := g++
+CXXFLAGS  := -O3 -ffast-math -march=native -fopenmp
+LDFLAGS   := -fopenmp
+TARGET    := main
+OBJS      := main.o init.o io.o jacobi.o
 
-all: init.o io.o jacobi.o main
-init.o: init.cpp init.h
-io.o: io.cpp io.h
-jacobi.o: jacobi.cpp jacobi.h
-main: init.o io.o jacobi.o
-clean: 
-	rm -f main init.o io.o jacobi.o
+.PHONY: all clean
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) $(LDFLAGS)
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+clean:
+	rm -f $(TARGET) $(OBJS)

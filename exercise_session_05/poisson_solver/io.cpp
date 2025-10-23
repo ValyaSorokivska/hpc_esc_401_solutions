@@ -1,5 +1,7 @@
 #include "io.h"
 #include "init.h"
+#include <cstdio>
+
 
 /**
  * @brief      Output the exact solution to the Poisson equation in a csv file
@@ -42,4 +44,18 @@ void output(params p, int step, double** u_new){
         ofs << '\n';
     }
     ofs.close();
+}
+
+void write_csv(const char* path, double** A, int nx, int ny) {
+    FILE* fp = std::fopen(path, "w");
+    if (!fp) {
+        perror("Error opening file for writing");
+        return;
+    }
+    for (int i = 0; i < nx; ++i) {
+        for (int j = 0; j < ny; ++j) {
+            std::fprintf(fp, (j + 1 < ny) ? "%.6e," : "%.6e\n", A[i][j]);
+        }
+    }
+    std::fclose(fp);
 }

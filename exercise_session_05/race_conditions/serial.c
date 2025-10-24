@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <limits.h>    
+#include <omp.h>  
 
 #define MAX_LINE_LENGTH 80
 
@@ -54,11 +56,13 @@ int main(int argc, char *argv[]){
 
     // first loop
     int maxval = 0;
+	#pragma omp parallel for
     for (int i=0;i<num_size;i++) if (numbers[i] > maxval) maxval = numbers[i];
     printf("max number in file: %d\n",maxval);	
 
     // second loop
     int num_n0 = 0;
+	#pragma omp parallel for
     for (int i=0;i<num_size;i++) if (numbers[i] == 0) num_n0++;
     printf("number of 0s in file: %d\n",num_n0);  
     printf("true number of 0s in file: %d\n",true_n0);  

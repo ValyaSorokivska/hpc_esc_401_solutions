@@ -1,0 +1,34 @@
+Exercise 1
+-------------
+Implementation of a ring where each MPI process circulates a rank value around the ring and accumulates the sum of all ranks.
+
+I built a ring on size processes with neighbors
+left = (rank-1+size)%size, right = (rank+1)%size.
+
+First version used synchronous send + standard receive:
+MPI_Ssend(..., right) then MPI_Recv(..., left).
+The program deadlocks — all ranks call Ssend first and block until a matching receive is posted (circular wait).
+
+Version 1 fixes the deadlock by alternating order:
+1) even ranks: Ssend → Recv
+2) odd ranks: Recv → Ssend
+
+Second version uses non-blocking communication that avoids deadlocks and allows computation to overlap with communication.
+It has two tested versions:
+1) Irecv-Isend-Waitall
+2) Isend-Irecv-Waitall
+Both combinations avoid deadlocks because communication is now asynchronous.
+
+Third version uses MPI Cartesian topologies to automatically manage neighbor communication in the ring.
+I created a 1D Cartesian communicator with periodic boundaries using MPI_Cart_create,
+recomputed ranks and neighbors using MPI_Cart_shift and 
+implemented the same ring logic using MPI_Sendrecv.
+
+General output for 2 and 3 versions:
+Result. With 4 ranks the output is:
+I am process 0 out of 4, and the sum is 6
+I am process 1 out of 4, and the sum is 6
+I am process 2 out of 4, and the sum is 6
+I am process 3 out of 4, and the sum is 6
+
+Files: ring.c (with deadlock),  ring_1.c, ring_2.c,  ring_3.c

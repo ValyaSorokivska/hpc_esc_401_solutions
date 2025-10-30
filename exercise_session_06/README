@@ -25,10 +25,23 @@ recomputed ranks and neighbors using MPI_Cart_shift and
 implemented the same ring logic using MPI_Sendrecv.
 
 General output for 2 and 3 versions:
-Result. With 4 ranks the output is:
 I am process 0 out of 4, and the sum is 6
 I am process 1 out of 4, and the sum is 6
 I am process 2 out of 4, and the sum is 6
 I am process 3 out of 4, and the sum is 6
 
 Files: ring.c (with deadlock),  ring_1.c, ring_2.c,  ring_3.c
+
+Exercise 2
+-----------
+Approximation of π using the Leibniz series and parallelization of the sum with MPI.
+
+I split the index range into contiguous blocks across size ranks (handles N % size).
+Each rank computes its local partial sum.
+
+Result is:
+N = 100000000 terms, ranks = 4
+pi ≈ 3.141592643589817  (error = -1.000e-08)
+time = 0.044 s
+
+File: pi_mpi.c

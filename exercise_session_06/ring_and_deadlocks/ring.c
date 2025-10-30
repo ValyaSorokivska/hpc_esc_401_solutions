@@ -16,15 +16,30 @@ int main(int argc, char** argv) {
     int recv_rank = 0;        // Receive buffer
 
     // Compute the ranks of left/right neighbours 
-    int left_rank, right_rank;
+    int right_rank = (my_rank + 1) % size;
+    int left_rank  = (my_rank - 1 + size) % size;
 
-    // Loop over the number of processes
+    // Loop over the number of property in ocesses
     //     send to right, receive from left
     //     update the send buffer
     //     update the local sum
+    for (int iter = 0; iter < size; ++iter) {
+        if (my_rank % 2 == 0) {
+            MPI_Ssend(&send_rank, 1, MPI_INT, right_rank, 0, MPI_COMM_WORLD);
+            MPI_Recv (&recv_rank, 1, MPI_INT,  left_rank, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        } else {
+            MPI_Recv (&recv_rank, 1, MPI_INT,  left_rank, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            MPI_Ssend(&send_rank, 1, MPI_INT, right_rank, 0, MPI_COMM_WORLD);
+        }
+
+        my_sum   += recv_rank;   
+        send_rank = recv_rank;   
+    }
+
 
     printf("I am processor %d out of %d, and the sum is %d\n", my_rank, size, my_sum);
 
     // Finalize the MPI environment.
     MPI_Finalize();
+    return 0;
 }

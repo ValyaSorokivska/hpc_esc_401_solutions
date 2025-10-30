@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
         send_val = recv_val;
     }
 
-    printf("I am process %d (of %d), sum = %d\n", rank, size, my_sum);
+    printf("I am process %d out of %d,and the sum is %d\n", rank, size, my_sum);
 
     MPI_Comm_free(&comm_cart);
     MPI_Finalize();

@@ -10,6 +10,9 @@ int main(int argc, char** argv) {
     MPI_Comm_size(MPI_COMM_WORLD, &size);
     MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
 
+    int send_first = (argc > 1) && 
+                     (!strcmp(argv[1], "send-first") || !strcmp(argv[1], "sendfirst"));
+
     int my_sum = 0;
 
     int send_rank = my_rank;  // Send    buffer
@@ -23,14 +26,21 @@ int main(int argc, char** argv) {
     //     send to right, receive from left
     //     update the send buffer
     //     update the local sum
+    
     for (int iter = 0; iter < size; ++iter) {
-        if (my_rank % 2 == 0) {
-            MPI_Ssend(&send_rank, 1, MPI_INT, right_rank, 0, MPI_COMM_WORLD);
-            MPI_Recv (&recv_rank, 1, MPI_INT,  left_rank, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        MPI_Request req[2];
+
+        if (!send_first) {
+            // Irecv -> Isend -> Waitall
+            MPI_Irecv(&recv_rank, 1, MPI_INT, left_rank,  0, MPI_COMM_WORLD, &req[0]);
+            MPI_Isend(&send_rank, 1, MPI_INT, right_rank, 0, MPI_COMM_WORLD, &req[1]);
         } else {
-            MPI_Recv (&recv_rank, 1, MPI_INT,  left_rank, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-            MPI_Ssend(&send_rank, 1, MPI_INT, right_rank, 0, MPI_COMM_WORLD);
+            // Isend -> Irecv -> Waitall
+            MPI_Isend(&send_rank, 1, MPI_INT, right_rank, 0, MPI_COMM_WORLD, &req[0]);
+            MPI_Irecv(&recv_rank, 1, MPI_INT, left_rank,  0, MPI_COMM_WORLD, &req[1]);
         }
+
+        MPI_Waitall(2, req, MPI_STATUSES_IGNORE);
 
         my_sum   += recv_rank;   
         send_rank = recv_rank;   

@@ -1,3 +1,4 @@
+#include <cstdio>
 
 int** initM() {
     int** M = new int*[2];
@@ -23,13 +24,8 @@ int** swap_reversed(int** M) {
     return M2;
 }
 
-void print2x5(int** A) {
-    for (int r = 0; r < 2; ++r) {
-        for (int c = 0; c < 5; ++c) {
-            std::cout << *(*(A + r) + c) << (c + 1 == 5 ? '\n' : ' ');
-        }
-    }
-}
+std::printf("%d%c", *(*(A + r) + c), (c + 1 == 5 ? '\n' : ' '));
+
 
 int main() {
     int** M  = initM();

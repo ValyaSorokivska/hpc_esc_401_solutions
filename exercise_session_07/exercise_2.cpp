@@ -31,9 +31,10 @@ void print2x5(int** A) {
         }
     }
 }
-print2x5(M2);
+
 
 int main() {
     int** M  = initM();
     int** M2 = swap_reversed(M);
+    print2x5(M2);
 }

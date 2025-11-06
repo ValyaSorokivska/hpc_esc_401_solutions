@@ -10,6 +10,9 @@ int array_strides(int x, int y) {
     return y * COLS + x;
 }
 
+
+
+
 int main() {
     for (int idx = 0; idx < 14 * 6; ++idx) {
         int y = idx / 14;

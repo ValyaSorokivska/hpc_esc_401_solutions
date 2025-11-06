@@ -32,5 +32,5 @@ void print2x5(int** A) {
 
 int main() {
     int** M  = initM();
-    int** M2 = swap_axis0_reversed(M);
+    int** M2 = swap_reversed(M);
 }

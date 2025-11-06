@@ -24,17 +24,7 @@ int** swap_reversed(int** M) {
     return M2;
 }
 
-void print2x5(int** A) {
-    for (int r = 0; r < 2; ++r) {
-        for (int c = 0; c < 5; ++c) {
-            std::printf("%d%c", *(*(A + r) + c), (c + 1 == 5 ? '\n' : ' '));
-        }
-    }
-}
-
-
 int main() {
     int** M  = initM();
     int** M2 = swap_reversed(M);
-    print2x5(M2);
 }

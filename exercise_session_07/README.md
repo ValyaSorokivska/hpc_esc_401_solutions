@@ -48,5 +48,6 @@ g) index = y * 14 + x,  0*14 + 10 = 10 is A[10].
 h) 3*14 + 0 = 42 is A[42].
 i) y = 7 is out of bounds so the element doesn’t exist.
 
-Files: exercise_2.cpp
+Files: exercise_3.cpp
+
 

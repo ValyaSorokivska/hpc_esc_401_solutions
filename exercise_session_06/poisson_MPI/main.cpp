@@ -21,8 +21,8 @@ int main(int argc, char *argv[]){
     // // Initialize the matrices used in the Jacobi iteration
     double **f, **u_old, **u_new;
     // set neighbors 
-    p.left  = (rank > 0)        ? rank - 1 : MPI_PROC_NULL;
-    p.right = (rank < size - 1) ? rank + 1 : MPI_PROC_NULL;
+    p.left  = (my_rank > 0)        ? my_rank - 1 : MPI_PROC_NULL;
+    p.right = (my_rank < size - 1) ? my_rank + 1 : MPI_PROC_NULL;
 
     // // First allocate memory for each matrix
     f = allocateGrid(p.xmax - p.xmin, p.ymax - p.ymin, f);
@@ -37,7 +37,7 @@ int main(int argc, char *argv[]){
     // // Do a first jacobi step
     jacobi_step(p, u_new, u_old, f, my_rank, size);
 
-    // // Compute differences and norm
+    // // Compute differences and normƒ
     double diff = norm_diff(p, u_new, u_old);
 
     printf("I am total square differences: %g\n",diff);

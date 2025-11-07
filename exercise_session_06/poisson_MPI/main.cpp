@@ -3,11 +3,8 @@
 #include "jacobi.h"
 #include "mpi_module.h"
 
+int size, my_rank;
 int main(int argc, char *argv[]){
-
-
-    int size, my_rank;
-    // int min_x,max_x,min_y,max_y;
 
     start_MPI(&my_rank,&size);
 
@@ -24,6 +21,9 @@ int main(int argc, char *argv[]){
 
     // // Initialize the matrices used in the Jacobi iteration
     double **f, **u_old, **u_new;
+    // set neighbors 
+    p.left  = (rank > 0)        ? rank - 1 : MPI_PROC_NULL;
+    p.right = (rank < size - 1) ? rank + 1 : MPI_PROC_NULL;
 
     // // First allocate memory for each matrix
     f = allocateGrid(p.xmax - p.xmin, p.ymax - p.ymin, f);

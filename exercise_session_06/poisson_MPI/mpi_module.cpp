@@ -1,6 +1,8 @@
 #include "mpi.h"
 #include <stdio.h>
 #include "init.h"
+#include <vector>
+
 
 int start_MPI(int* my_rank, int* size){
 	printf("Setting MPI environment\n");
@@ -49,10 +51,6 @@ const int ny_loc = p.ymax - p.ymin;   //  height
 const int ldx = nx_loc + 2;           // + 2 ghost columns
 const int ldy = ny_loc + 2;           // + 2 ghost rows 
 
-u  = new double[ldx * ldy];
-rhs= new double[ldx * ldy];
-
-
 int halo_comm(params p, int my_rank, int size, double** u, double* fromLeft, double* fromRight){
 	
 	const int nx_loc = p.xmax - p.xmin;   // number of local columns
@@ -62,7 +60,6 @@ int halo_comm(params p, int my_rank, int size, double** u, double* fromLeft, dou
     const int left  = (my_rank > 0)        ? my_rank - 1 : MPI_PROC_NULL;
     const int right = (my_rank < size - 1) ? my_rank + 1 : MPI_PROC_NULL;
 
-    std::vector<double> sendL(ny_loc), sendR(ny_loc);
     for (int j = 0; j < ny_loc; ++j) {
         sendL[j] = u[0][j];               // send first interior col to left neighbor
         sendR[j] = u[nx_loc - 1][j];      // send last  interior col to right neighbor
@@ -70,6 +67,8 @@ int halo_comm(params p, int my_rank, int size, double** u, double* fromLeft, dou
 
     //non-blocking exchange 
     MPI_Request req[4]; int k = 0;
+	int left  = (my_rank > 0)        ? my_rank - 1 : MPI_PROC_NULL;
+    int right = (my_rank < size - 1) ? my_rank + 1 : MPI_PROC_NULL;
 
     // receive halos 
     MPI_Irecv(fromLeft,  ny_loc, MPI_DOUBLE, left,  11, MPI_COMM_WORLD, &req[k++]);  // from lefft  neighbor

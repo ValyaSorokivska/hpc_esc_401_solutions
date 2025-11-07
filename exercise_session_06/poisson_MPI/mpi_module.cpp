@@ -1,4 +1,5 @@
 #include "mpi.h"
+#include "mpi_module.h"
 #include <stdio.h>
 #include "init.h"
 #include <vector>

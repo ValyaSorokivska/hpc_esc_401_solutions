@@ -22,10 +22,8 @@ int mpi_get_domain(int nx, int ny, int my_rank, int size, int* min_x, int* max_x
 	const int q = nx / size;      
     const int r = nx % size;       
 
-    
     const int nx_loc = q + (my_rank < r ? 1 : 0);
 
-    
     int x0;
     if (my_rank < r) {
         x0 = my_rank * (q + 1);
@@ -43,20 +41,11 @@ int mpi_get_domain(int nx, int ny, int my_rank, int size, int* min_x, int* max_x
 	return 0;
 }
 
-
-//local sizes 
-const int nx_loc = p.xmax - p.xmin;   //  width
-const int ny_loc = p.ymax - p.ymin;   //  height
-
-const int ldx = nx_loc + 2;           // + 2 ghost columns
-const int ldy = ny_loc + 2;           // + 2 ghost rows 
-
 int halo_comm(params p, int my_rank, int size, double** u, double* fromLeft, double* fromRight){
 	
 	const int nx_loc = p.xmax - p.xmin;   // number of local columns
     const int ny_loc = p.ymax - p.ymin;   // number of local rows
 
-    
     const int left  = (my_rank > 0)        ? my_rank - 1 : MPI_PROC_NULL;
     const int right = (my_rank < size - 1) ? my_rank + 1 : MPI_PROC_NULL;
 

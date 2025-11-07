@@ -48,7 +48,15 @@ int halo_comm(params p, int my_rank, int size, double** u, double* fromLeft, dou
 
     const int left  = (my_rank > 0)        ? my_rank - 1 : MPI_PROC_NULL;
     const int right = (my_rank < size - 1) ? my_rank + 1 : MPI_PROC_NULL;
+    
+	for (int j = 0; j < ny_loc; ++j) {
+		fromLeft[j] = 0.0; fromRight[j] = 0.0; 
+	}
 
+	
+ 	double* sendL = new double[ny_loc];
+    double* sendR = new double[ny_loc];
+	
     for (int j = 0; j < ny_loc; ++j) {
         sendL[j] = u[0][j];               // send first interior col to left neighbor
         sendR[j] = u[nx_loc - 1][j];      // send last  interior col to right neighbor

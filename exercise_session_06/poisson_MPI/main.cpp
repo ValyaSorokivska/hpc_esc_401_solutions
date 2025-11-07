@@ -3,12 +3,11 @@
 #include "jacobi.h"
 #include "mpi_module.h"
 
-int size, my_rank;
 int main(int argc, char *argv[]){
 
+    int size=0, my_rank=-1;
     start_MPI(&my_rank,&size);
-
-
+    
     const char* file_name="params.txt";
 
     // Read the parameter file and store information in a params structure (defined in init.h)

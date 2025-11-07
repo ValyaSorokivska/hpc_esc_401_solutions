@@ -70,8 +70,8 @@ int halo_comm(params p, int my_rank, int size, double** u, double* fromLeft, dou
     MPI_Irecv(fromRight, ny_loc, MPI_DOUBLE, right, 10, MPI_COMM_WORLD, &req[k++]);  // from rigt neighbor
 
     // send columns
-    MPI_Isend(sendL.data(), ny_loc, MPI_DOUBLE, left,  10, MPI_COMM_WORLD, &req[k++]); 
-    MPI_Isend(sendR.data(), ny_loc, MPI_DOUBLE, right, 11, MPI_COMM_WORLD, &req[k++]); 
+    MPI_Isend(sendL, ny_loc, MPI_DOUBLE, left,  10, MPI_COMM_WORLD, &req[k++]); 
+    MPI_Isend(sendR, ny_loc, MPI_DOUBLE, right, 11, MPI_COMM_WORLD, &req[k++]); 
 
     MPI_Waitall(k, req, MPI_STATUSES_IGNORE);
 

@@ -44,6 +44,9 @@ void jacobi_step(params p, double** u_new, double** u_old, double** f, int my_ra
     double dx = 1.0/((double)p.nx - 1);
     double dy = 1.0/((double)p.ny - 1);
 
+    const int nx_loc = p.xmax - p.xmin;  
+    const int ny_loc = p.ymax - p.ymin;  
+
     double* fromLeft = new double[p.ymax - p.ymin]; 
     double* fromRight = new double[p.ymax - p.ymin];
 

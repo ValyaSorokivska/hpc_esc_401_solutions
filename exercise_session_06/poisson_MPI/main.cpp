@@ -20,9 +20,7 @@ int main(int argc, char *argv[]){
 
     // // Initialize the matrices used in the Jacobi iteration
     double **f, **u_old, **u_new;
-    // set neighbors 
-    p.left  = (my_rank > 0)        ? my_rank - 1 : MPI_PROC_NULL;
-    p.right = (my_rank < size - 1) ? my_rank + 1 : MPI_PROC_NULL;
+
 
     // // First allocate memory for each matrix
     f = allocateGrid(p.xmax - p.xmin, p.ymax - p.ymin, f);

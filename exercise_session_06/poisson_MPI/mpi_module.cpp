@@ -56,8 +56,6 @@ int halo_comm(params p, int my_rank, int size, double** u, double* fromLeft, dou
 
     //non-blocking exchange 
     MPI_Request req[4]; int k = 0;
-	int left  = (my_rank > 0)        ? my_rank - 1 : MPI_PROC_NULL;
-    int right = (my_rank < size - 1) ? my_rank + 1 : MPI_PROC_NULL;
 
     // receive halos 
     MPI_Irecv(fromLeft,  ny_loc, MPI_DOUBLE, left,  11, MPI_COMM_WORLD, &req[k++]);  // from lefft  neighbor

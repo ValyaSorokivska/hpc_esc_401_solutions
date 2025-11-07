@@ -33,13 +33,14 @@ int mpi_get_domain(int nx, int ny, int my_rank, int size, int* min_x, int* max_x
     const int x1 = x0 + nx_loc;    
 
     *min_x = x0;        
-    *max_x = x1;
+    *max_x = x0 + nx_loc;
     *min_y = 0;        
     *max_y = ny;
 	
 	printf("I am rank %d and my domain is: xmin, xmax, ymin, ymax: %d %d %d %d\n",my_rank,*min_x,*max_x,*min_y,*max_y);
 	return 0;
 }
+
 
 //local sizes 
 const int nx_loc = p.xmax - p.xmin;   //  width

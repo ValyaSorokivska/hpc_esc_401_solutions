@@ -1,5 +1,8 @@
 #ifndef MPI_MODULE
 #define MPI_MODULE
+#pragma once
+#include "mpi.h"
+#include "init.h"
 
 
 // #include "init.h"

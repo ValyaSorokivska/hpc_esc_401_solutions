@@ -20,8 +20,10 @@ Exercise 2
 ------------
 The output:
 PI = 3.14159265358979 computed in 0.04855 seconds
-
-
+Compared to the serial CPU code thatruns for ~3.3 s this gives a speedup 
+The GPU already makes the computation much faster.
+But the CUDA code is still much slower than the OpenACC version that runs ~0.00114 s)
+So the given CUDA implementation is not fully optimized.
 
 Exercise 3 
 -------------

@@ -19,15 +19,19 @@ __global__ void cal_pi(double *sum, int nbin, double step, int nthreads, int nbl
 }
 
 // Main routine that executes on the host
-int main(void) {
-	dim3 dimGrid(NUM_BLOCK,1,1);  // Grid dimensions
-	dim3 dimBlock(NUM_THREAD,1,1);  // Block dimensions
+int main(int argc, char *argv[]) {
+	int numBlocks  = NUM_BLOCK;  
+	int numThreads = NUM_THREAD; 
+	if (argc > 1) numBlocks  = atoi(argv[1]);
+	if (argc > 2) numThreads = atoi(argv[2]);
+	dim3 dimGrid(numBlocks,1,1);  // Grid dimensions
+	dim3 dimBlock(numThreads,1,1);  // Block dimensions
 	double *sumHost, *sumDev;  // Pointer to host & device arrays
 	double pi = 0;
 	int tid;
 
 	double step = 1.0/NBIN;  // Step size
-	size_t size = NUM_BLOCK*NUM_THREAD*sizeof(double);  //Array memory size
+	size_t size = numBlocks * numThreads * sizeof(double); //Array memory size
 	sumHost = (double *)malloc(size);  //  Allocate array on host
 	cudaMalloc((void **) &sumDev, size);  // Allocate array on device
    	double start = getTime();
@@ -35,10 +39,10 @@ int main(void) {
 	// Initialize array in device to 0
 	cudaMemset(sumDev, 0, size);
 	// Do calculation on device
-	cal_pi <<<dimGrid, dimBlock>>> (sumDev, NBIN, step, NUM_THREAD, NUM_BLOCK); // call CUDA kernel
+	cal_pi <<<dimGrid, dimBlock>>> (sumDev, NBIN, step, numThreads, numBlocks); // call CUDA kernel
 	// Retrieve result from device and store it in host array
 	cudaMemcpy(sumHost, sumDev, size, cudaMemcpyDeviceToHost);
-	for(tid=0; tid<NUM_THREAD*NUM_BLOCK; tid++)
+	for(tid=0; tid<numThreads * numBlocks; tid++)
 		pi += sumHost[tid];
 	pi *= step;
 

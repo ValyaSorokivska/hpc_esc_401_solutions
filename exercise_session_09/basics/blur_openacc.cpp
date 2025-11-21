@@ -57,10 +57,9 @@ void blur_twice_gpu_naive(double *in , double *out , int n, int nsteps)
             for (auto i = 1; i < n-1; ++i) {
                 buffer[i] = blur(i, in);}
 
-            buffer[0]   = in[0];
-            buffer[1]   = in[1];
-            buffer[n-2] = in[n-2];
-            buffer[n-1] = in[n-1];
+            #pragma acc parallel loop
+            for (int k : {0,1,n-2,n-1})
+                buffer[k] = in[k];
             
         }
 
@@ -70,14 +69,13 @@ void blur_twice_gpu_naive(double *in , double *out , int n, int nsteps)
             for (auto i = 1; i < n-1; ++i){
                 out[i] = blur(i, buffer);}
 
-            out[0]   = buffer[0];
-            out[1]   = buffer[1];
-            out[n-2] = buffer[n-2];
-            out[n-1] = buffer[n-1];
+            #pragma acc parallel loop
+            for (int k : {0,1,n-2,n-1})
+                out[k] = buffer[k];
         }
 
-        for (int i = 0; i < n; ++i){
-            in[i] = out[i];}
+        std::swap(in, out);
+
     }
 
     free(buffer);

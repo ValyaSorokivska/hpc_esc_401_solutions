@@ -1,6 +1,7 @@
 Exercise 1
 -----------
 Output:
+
 16:
 memcopy and daxpy test of size 65536
 
@@ -31,6 +32,7 @@ Files:axpy.openacc, axpy_openacc.cpp
 Exercise 2
 -----------
 Output for naive version:
+
 20:
 dispersion 1D test of length n = 1048580 : 8.00003MB
 Host version took 0.16417 s (0.0016417 s/step)
@@ -50,6 +52,7 @@ GPU version took 3.58217 s (0.0358217 s/step)
 The GPU spends almost all of its time waiting for memory movement rather than computing, so increasing the problem size does not significantly change performance.
 
 Output for blur_twice_gpu_nocopies:
+
 20:
 dispersion 1D test of length n = 1048580 : 8.00003MB
 Host version took 0.218382 s (0.00218382 s/step)
@@ -82,6 +85,7 @@ Exercise 3
 -----------
 
 Output:
+
 24:
 dot product OpenACC of length n = 16777216 : 128MB
 Host kernel took 0.0630278 s

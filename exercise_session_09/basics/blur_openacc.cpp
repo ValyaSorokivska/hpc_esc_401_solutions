@@ -54,10 +54,12 @@ void blur_twice_gpu_naive(double *in , double *out , int n, int nsteps)
        #pragma acc data copyin(in[0:n]) copyout(buffer[0:n])
         { 
             #pragma acc parallel loop
-            for (auto i = 1; i < n-1; ++i) 
-                buffer[i] = blur(i, in);
+            for (auto i = 1; i < n-1; ++i) {
+                buffer[i] = blur(i, in);}
 
-            buffer[0] = in[0];
+            buffer[0]   = in[0];
+            buffer[1]   = in[1];
+            buffer[n-2] = in[n-2];
             buffer[n-1] = in[n-1];
             
         }
@@ -65,15 +67,17 @@ void blur_twice_gpu_naive(double *in , double *out , int n, int nsteps)
         #pragma acc data copyin(buffer[0:n]) copyout(out[0:n])
         {
             #pragma acc parallel loop
-            for (auto i = 1; i < n-1; ++i) 
-                out[i] = blur(i, buffer);
+            for (auto i = 1; i < n-1; ++i){
+                out[i] = blur(i, buffer);}
 
-            out[0] = buffer[0];
+            out[0]   = buffer[0];
+            out[1]   = buffer[1];
+            out[n-2] = buffer[n-2];
             out[n-1] = buffer[n-1];
         }
 
-        for (int i = 0; i < n; ++i)
-            in[i] = out[i];
+        for (int i = 0; i < n; ++i){
+            in[i] = out[i];}
     }
 
     free(buffer);

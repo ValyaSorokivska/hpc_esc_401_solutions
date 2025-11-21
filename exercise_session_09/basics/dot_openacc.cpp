@@ -7,7 +7,7 @@
 double dot_host(const double *x, const double *y, int n) {
     double sum = 0;
 
-    #pragma omp parallel for reduction(+:sum)
+    #pragma omp parallel for reduction(+:sum) 
     for (int i = 0; i < n; ++i) {
         sum += x[i]*y[i];
     }
@@ -19,7 +19,7 @@ double dot_gpu(const double *x, const double *y, int n) {
     double sum = 0;
     int i;
 
-    // TODO: Offload this loop to the GPU
+    #pragma acc parallel loop reduction(+:sum) copyin(x[0:n], y[0:n])
     for (i = 0; i < n; ++i) {
         sum += x[i]*y[i];
     }

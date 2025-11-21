@@ -77,20 +77,30 @@ void blur_twice_gpu_nocopies(double *in , double *out , int n, int nsteps)
 {
     double *buffer = malloc_host<double>(n);
 
-    // TODO: move the data needed by the algorithm to the GPU
+    #pragma acc data copyin(in[0:n]) copy(out[0:n]) create(buffer[0:n])
     {
         for (auto istep = 0; istep < nsteps; ++istep) {
-            // TODO: offload this loop to the GPU
+            
+            #pragma acc parallel loop
             for (auto i = 1; i < n-1; ++i) {
                 buffer[i] = blur(i, in);
             }
 
-            // TODO: offload this loop to the GPU
+            buffer[0]   = in[0];
+            buffer[1]   = in[1];
+            buffer[n-2] = in[n-2];
+            buffer[n-1] = in[n-1];
+
+            #pragma acc parallel loop
             for (auto i = 2; i < n-2; ++i) {
                 out[i] = blur(i, buffer);
             }
+            out[0]   = buffer[0];
+            out[1]   = buffer[1];
+            out[n-2] = buffer[n-2];
+            out[n-1] = buffer[n-1];
 
-            // TODO: offload this loop to the GPU; can you try just the pointer assignment?
+            #pragma acc parallel loop present(in, out)
             for (auto i = 0; i < n; ++i) {
                 in[i] = out[i];
             }
@@ -130,7 +140,7 @@ int main(int argc, char** argv) {
     auto time_host = get_time() - tstart_host;
 
     auto tstart = get_time();
-    blur_twice_gpu_naive(x0, x1, n, nsteps);
+    blur_twice_gpu_nocopies(x0, x1, n, nsteps);
     auto time = get_time() - tstart;
 
     auto validate = true;

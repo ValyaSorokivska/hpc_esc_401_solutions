@@ -50,32 +50,24 @@ void blur_twice_gpu_naive(double *in , double *out , int n, int nsteps)
     double *buffer = malloc_host<double>(n);
 
     for (auto istep = 0; istep < nsteps; ++istep) {
-        
-       #pragma acc data copyin(in[0:n]) copyout(buffer[0:n])
-        { 
-            #pragma acc parallel loop
-            for (auto i = 1; i < n-1; ++i) {
-                buffer[i] = blur(i, in);}
-
-            #pragma acc parallel loop
-            for (int k : {0,1,n-2,n-1})
-                buffer[k] = in[k];
-            
-        }
-
-        #pragma acc data copyin(buffer[0:n]) copyout(out[0:n])
+        #pragma acc data copyin(in[0:n]) copy(buffer[0:n])
         {
             #pragma acc parallel loop
-            for (auto i = 1; i < n-1; ++i){
-                out[i] = blur(i, buffer);}
-
-            #pragma acc parallel loop
-            for (int k : {0,1,n-2,n-1})
-                out[k] = buffer[k];
+            for (auto i = 1; i < n-1; ++i) {
+                buffer[i] = blur(i, in);
+            }
         }
 
-        std::swap(in, out);
+        #pragma acc data copyin(buffer[0:n]) copy(out[0:n])
+        {
+            #pragma acc parallel loop
+            for (auto i = 2; i < n-2; ++i) {
+                out[i] = blur(i, buffer);
+            }
+        }
 
+        for (int i = 0; i < n; ++i) {
+            in[i] = out[i];}
     }
 
     free(buffer);

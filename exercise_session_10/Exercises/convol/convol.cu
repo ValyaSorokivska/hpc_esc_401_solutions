@@ -52,6 +52,7 @@ extern "C" void gpu_convol (float *a, float *b, int n) {
   // memory transfer.
   chrono (START, &time);
   // TO DO : the number of blocks is missing below in the kernel invocation
+  int numBlocks = (n*n + BLOCKSIZE - 1) / BLOCKSIZE;
   kconvol <<<numBlocks,BLOCKSIZE>>> (gpu_a, gpu_b, n);
   err=cudaDeviceSynchronize ();
   chrono (STOP, &time);

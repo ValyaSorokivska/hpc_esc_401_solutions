@@ -18,7 +18,7 @@ Exercise 4
 -----------
 Implemented a 2D stencil operation.
 Implemented Neighbor Indexing (for convolution). 
-The Optimal Block Size is:
+The Optimal Block Size is: 128
 
 the output for different sizes of blocks:
 
@@ -29,6 +29,12 @@ Convolution took  0.004813 sec. on CPU
 
 256:
 
+Convolution took  0.065360 sec. on GPU
+Convolution took  0.004808 sec. on CPU
+
+512:
+Convolution took  0.064246 sec. on GPU
+Convolution took  0.004840 sec. on CPU
 
 
 Files: 	convol.o

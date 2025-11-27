@@ -66,7 +66,6 @@ int main () {
 
   
   /* TO DO : complete the number of blocks below */
-  int numBlocks = ...;
 
   dim3 threads(16, 16);
  

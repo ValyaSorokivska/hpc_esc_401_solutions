@@ -7,9 +7,10 @@
 
 __global__ void kern_set_val (float *gpu_ptr, float value, int n) {
   int i;
-  //TO DO: evaluate the value of i 
-  gpu_ptr[i] = value;
-}
+  int i = blockIdx.x * blockDim.x + threadIdx.x;
+  if (i<n){
+    gpu_ptr[i] = value;
+  }
 
 int main () {
   int i, failed=0;
@@ -23,11 +24,13 @@ int main () {
   /* Allocate vector in Device*/
   cudaMalloc (&gpu_ptr, sizeof(float)*N);
 
-  //TO DO : write kernel invocation here
+  int GridDim = (N + BLOCKSIZE - 1) / BLOCKSIZE;
 
   cudaDeviceSynchronize ();
 
-  //TO DO : copy data to host
+  kern_set_val<<<GridDim, BLOCKSIZE>>>(gpu_ptr, value, N);
+
+  cudaMemcpy(ptr, gpu_ptr, (sizeof(float) * N), cudaMemcpyDeviceToHost)
 
   cudaFree (gpu_ptr);
 

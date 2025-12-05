@@ -1,0 +1,319 @@
+CrayPat/X:  Version 23.12.0 Revision 67ffc52e7 sles15.4_x86_64  11/13/23 21:04:20
+
+Number of PEs (MPI ranks):    1
+                           
+Numbers of PEs per Node:      1
+                           
+Numbers of Threads per PE:    1
+                           
+Number of Cores per Socket:  64
+
+Execution start time:  Fri Dec  5 10:18:30 2025
+
+System name and speed:  nid001845  2.254 GHz (nominal)
+
+AMD   Rome                 CPU  Family: 23  Model: 49  Stepping:  0
+
+Core Performance Boost:  1 PE has CPB capability
+
+Current path to data file:
+  /users/vsorokiv/hpc_esc_401_solutions/exercise_session_11/nbody/nbody+83717-864974590s   (RTS)
+
+
+Notes for table 1:
+
+  This table shows functions that have significant exclusive sample
+    hits, averaged across ranks.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O samp_profile ...
+
+Table 1:  Sample Profile by Function
+
+  Samp% |    Samp | Group
+        |         |  Function
+       
+ 100.0% | 1,257.0 | Total
+|----------------------------
+| 100.0% | 1,257.0 | USER
+||---------------------------
+|| 100.0% | 1,257.0 | main
+|============================
+
+Notes for table 2:
+
+  This table shows functions, and line numbers within functions, that
+    have significant exclusive sample hits, averaged across ranks.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O samp_profile+src ...
+
+Table 2:  Sample Profile by Group, Function, and Line
+
+  Samp% |    Samp | Group
+        |         |  Function
+        |         |   Source
+        |         |    Line
+       
+ 100.0% | 1,257.0 | Total
+|----------------------------------------------------------------------------
+| 100.0% | 1,257.0 | USER
+||---------------------------------------------------------------------------
+|| 100.0% | 1,257.0 | main
+|||--------------------------------------------------------------------------
+3||  81.1% | 1,020.0 | hpc_esc_401_solutions/exercise_session_11/nbody/nbody.cpp
+||||-------------------------------------------------------------------------
+4|||   2.3% |    29.0 | line.38
+4|||  21.2% |   267.0 | line.39
+4|||  57.6% |   724.0 | line.40
+||||=========================================================================
+3||  18.9% |   237.0 | c++/12/bits/stl_vector.h
+4||        |         |  line.386
+|============================================================================
+
+Notes for table 3:
+
+  This table shows HW performance counter data for the whole program,
+    averaged across ranks or threads, as applicable.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O hwpc ...
+
+Table 3:  Program HW Performance Counter Data
+
+Total
+
+  
+==============================================================================
+  Total
+------------------------------------------------------------------------------
+  Thread Time                                    12.603194 secs
+  CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:
+    LS_RD_BLK_C                                 22,910,447 
+  L2_PREFETCH_HIT_L2                           161,841,117 
+  L2_PREFETCH_HIT_L3                         1,224,121,792 
+  REQUESTS_TO_L2_GROUP1:L2_HW_PF             1,386,040,740 
+  REQUESTS_TO_L2_GROUP1:RD_BLK_X                    80,603 
+  Cache Lines PF from OffCore   0.097 G/sec  1,224,199,623 lines
+  Cache Lines PF from Memory    0.006 M/sec         77,831 lines
+  Cache Lines Requested from 
+    Memory                    115.572  /sec          1,457 lines
+  Write Memory Traffic GBytes  22.984  /sec           0.00 GB
+  Read Memory Traffic GBytes    0.403 M/sec           0.01 GB
+  Memory traffic GBytes         0.403 M/sec           0.01 GB
+  Memory Traffic / Nominal Peak                       0.0% 
+==============================================================================
+
+Notes for table 4:
+
+  This table shows energy and power usage for the nodes with the
+    maximum, mean, and minimum usage, as well as the sum of usage over
+    all nodes.
+    Energy and power for accelerators is also shown, if available.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O program_energy ...
+
+Table 4:  Program Energy and Power Usage from Cray PM
+
+Total
+
+  
+===========================================================
+  Total
+-----------------------------------------------------------
+  PM Energy Node    221 W     2,788 J
+  PM Energy Cpu      55 W       689 J
+  PM Energy Memory  120 W     1,520 J
+  Process Time            12.621416 secs
+===========================================================
+
+Notes for table 5:
+
+  This table shows values shown for HiMem calculated from information
+    in the /proc/self/numa_maps files captured near the end of the
+    program. It is the total size of all pages, including huge pages,
+    that were actually mapped into physical memory from both private
+    and shared memory segments.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O himem ...
+
+Table 5:  Memory High Water Mark by Numa Node
+
+Numanode
+
+  
+============================================================================
+  numanode.7
+----------------------------------------------------------------------------
+  Process HiMem (MiBytes)          53.6 
+  HiMem Numa Node 0 (MiBytes)       3.3 MiBytes
+  HiMem Numa Node 1 (MiBytes)       0.8 MiBytes
+  HiMem Numa Node 2 (MiBytes)       0.8 MiBytes
+  HiMem Numa Node 3 (MiBytes)       0.8 MiBytes
+  HiMem Numa Node 4 (MiBytes)       0.8 MiBytes
+  HiMem Numa Node 5 (MiBytes)       0.8 MiBytes
+  HiMem Numa Node 6 (MiBytes)       1.4 MiBytes
+  HiMem Numa Node 7 (MiBytes)      44.9 MiBytes
+============================================================================
+
+Notes for table 6:
+
+  This table shows memory traffic for numa nodes, taking for each numa
+    node the maximum value across nodes. It also shows the balance in
+    memory traffic by showing the top 3 and bottom 3 node values.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O mem_bw ...
+
+Table 6:  Memory Bandwidth by Numanode
+
+  Memory |    Read |   Write |    Thread |  Memory |  Memory | Numanode
+ Traffic |  Memory |  Memory |      Time | Traffic | Traffic | 
+  GBytes | Traffic | Traffic |           |  GBytes |       / | 
+         |  GBytes |  GBytes |           |   / Sec | Nominal | 
+         |         |         |           |         |    Peak | 
+|------------------------------------------------------------------------
+|    0.01 |    0.01 |    0.00 | 12.603194 |    0.00 |    0.0% | numanode.7
+|========================================================================
+
+Notes for table 7:
+
+  This table shows total wall clock time for the ranks with the
+    maximum, mean, and minimum time, as well as the average across
+    ranks.
+    It also shows maximum memory usage from /proc/self/numa_maps for
+    those ranks, and on average.  The usage is total size of all
+    pages, including huge pages, that were actually mapped into
+    physical memory from both private and shared memory segments.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O program_time ...
+
+Table 7:  Wall Clock Time, Memory High Water Mark
+
+   Process |   Process | Total
+      Time |     HiMem | 
+           | (MiBytes) | 
+------------------------------
+ 12.621416 |      53.6 | Total
+==============================
+
+========================  Additional details  ========================
+
+General table notes:
+
+    The default notes for a table are based on the default definition of
+    the table, and do not account for the effects of command-line options
+    that may modify the content of the table.
+    
+    Detailed notes, produced by the pat_report -v option, do account for
+    all command-line options, and also show how data is aggregated, and
+    if the table content is limited by thresholds, rank selections, etc.
+    
+    An imbalance metric in a line is based on values in main threads
+    across multiple ranks, or on values across all threads, as applicable.
+    
+    An imbalance percent in a line is relative to the maximum value
+    for that line across ranks or threads, as applicable.
+    
+    If the number of Calls for a function is shown as "--", then that
+    function was not traced and the other values in its line summarize
+    the data collected for functions that it calls and that were traced.
+    
+Experiment:  samp_cs_time
+
+Sampling interval:  10000 microsecs
+
+Original path to data file:
+  /users/vsorokiv/hpc_esc_401_solutions/exercise_session_11/nbody/nbody+83717-864974590s/xf-files   (RTS)
+
+Original program:
+  /users/vsorokiv/hpc_esc_401_solutions/exercise_session_11/nbody/nbody+orig
+
+Instrumented with:
+  pat_build -f -O lite-samples -Drtenv=PAT_RT_REPORT_METHOD=team \
+    -Drtenv=PAT_RT_REPORT_CLEANUP=skip nbody+orig nbody
+
+  Option file "lite-samples" contained:
+    -Drtenv=PAT_RT_PERFCTR=default_samp
+    -Drtenv=PAT_RT_EXPERIMENT=samp_cs_time
+    -Drtenv=PAT_RT_SAMPLING_MODE=3
+    -Dreport=y
+    -Drtenv=PAT_RT_REPORT_CMD=pat_report,-O,lite-samples,-s,summoner=rtl
+    -g upc
+    -g caf
+    -g mpi
+    -g shmem
+    -g syscall
+    -g io
+    -g dl
+
+Instrumented program:
+  /users/vsorokiv/hpc_esc_401_solutions/exercise_session_11/nbody/./nbody
+
+Program invocation:
+  /users/vsorokiv/hpc_esc_401_solutions/exercise_session_11/nbody/./nbody
+
+Exit Status:  0 for 1 PE
+
+Memory pagesize:  4 KiB
+
+Memory hugepagesize:  Not Available
+
+Programming environment:  CRAY
+
+Runtime environment variables:
+  CRAYPAT_COMPILER_OPTIONS=1
+  CRAYPAT_LD_LIBRARY_PATH=/opt/cray/pe/perftools/23.12.0/lib64
+  CRAYPAT_LITE=lite-samples
+  CRAYPAT_OPTS_EXECUTABLE=libexec64/opts
+  CRAYPAT_ROOT=/opt/cray/pe/perftools/23.12.0
+  CRAYPE_VERSION=2.7.30
+  CRAY_BINUTILS_VERSION=/opt/cray/pe/cce/17.0.0
+  CRAY_CC_VERSION=17.0.0
+  CRAY_DSMML_VERSION=0.2.2
+  CRAY_FTN_VERSION=17.0.0
+  CRAY_MPICH_VERSION=8.1.28
+  CRAY_PERFTOOLS_VERSION=23.12.0
+  CRAY_PE_LIBSCI_VERSION=23.12.5
+  LMOD_FAMILY_COMPILER_VERSION=17.0.0
+  LMOD_FAMILY_CRAYPE_CPU_VERSION=false
+  LMOD_FAMILY_CRAYPE_NETWORK_VERSION=false
+  LMOD_FAMILY_CRAYPE_VERSION=2.7.30
+  LMOD_FAMILY_LIBSCI_VERSION=23.12.5
+  LMOD_FAMILY_MPI_VERSION=8.1.28
+  LMOD_FAMILY_PERFTOOLS_VERSION=false
+  LMOD_FAMILY_PRGENV_VERSION=8.5.0
+  LMOD_VERSION=8.7.31
+  MPICH_DIR=/opt/cray/pe/mpich/8.1.28/ofi/crayclang/17.0
+  PAT_RT_EXPERIMENT=samp_cs_time
+  PAT_RT_PERFCTR=default_samp
+  PAT_RT_PERFCTR_DISABLE_COMPONENTS=nvml,rocm_smi
+  PAT_RT_REPORT_CLEANUP=skip
+  PAT_RT_REPORT_CMD=pat_report,-O,lite-samples,-s,summoner=rtl
+  PAT_RT_REPORT_METHOD=team
+  PAT_RT_SAMPLING_MODE=3
+  PERFTOOLS_VERSION=23.12.0
+  PMI_CONTROL_PORT=23567
+  PMI_JOBID=6067998
+  PMI_LOCAL_RANK=0
+  PMI_LOCAL_SIZE=1
+  PMI_RANK=0
+  PMI_SHARED_SECRET=62650513141091114
+  PMI_SIZE=1
+  PMI_UNIVERSE_SIZE=1
+
+Report time environment variables:
+    CRAYPAT_ROOT=/opt/cray/pe/perftools/23.12.0
+
+Number of MPI control variables collected:  0
+
+  (To see the list, specify: -s mpi_cvar=show)
+
+Report command line options:  <none>
+
+Operating system:
+  Linux 5.14.21-150500.55.65_13.0.73-cray_shasta_c #1 SMP Fri Jun 14 21:25:32 UTC 2024 (d052318)
+
+Hardware performance counter events:
+   CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:LS_RD_BLK_C  L2 cache request outcomes. This event does not count accesses to the L2 cache by the L2 prefetcher.:Number of data cache fill requests missing in the L2 (all types).
+   L2_PREFETCH_HIT_L2                                      Number of L2 prefetcher hits in the L2
+   L2_PREFETCH_HIT_L3                                      Number of L2 prefetcher hits in the L3
+   REQUESTS_TO_L2_GROUP1:L2_HW_PF                          TBD:Number of prefetches accepted by L2 pipeline, hit or miss.
+   REQUESTS_TO_L2_GROUP1:RD_BLK_X                          TBD:Number of data cache stores
+

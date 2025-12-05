@@ -42,8 +42,8 @@ void forces(particles &plist) {
     int n = plist.x.size();
     for(int i=0; i<n; ++i) { 		// We want to calculate the force on all particles
 	float ax=0, ay=0, az=0;
-        for(int j=0; j<n; ++j) {			// Depends on all other particles
-	    if (i==j) continue; // Skip self interaction 
+		
+        for(int j=0; j<i; ++j) {			// Depends on all other particles
 	    auto dx = plist.x[j] - plist.x[i];
 	    auto dy = plist.y[j] - plist.y[i];
 	    auto dz = plist.z[j] - plist.z[i];
@@ -54,6 +54,18 @@ void forces(particles &plist) {
 	    ay += dy * ir3;
 	    az += dz * ir3;
 	}
+		for (int j = i+1; j < n; ++j) {
+            float dx = plist.x[j] - plist.x[i];
+            float dy = plist.y[j] - plist.y[i];
+            float dz = plist.z[j] - plist.z[i];
+            float r  = sqrtf(dx*dx + dy*dy + dz*dz);
+
+            float ir3 = 1.0f / (r*r*r);
+            ax += dx * ir3;
+            ay += dy * ir3;
+            az += dz * ir3;
+        }
+		
 	plist.ax[i] = ax;
 	plist.ay[i] = ay;
 	plist.az[i] = az;

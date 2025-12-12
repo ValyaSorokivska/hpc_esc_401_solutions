@@ -1,6 +1,6 @@
 CFLAGS=-O3 -ffast-math -mavx2
 
-CC=CC
+CC=mpic++
 
 all: mpi_module.o init.o io.o jacobi.o main.o main 
 init.o: init.cpp init.h

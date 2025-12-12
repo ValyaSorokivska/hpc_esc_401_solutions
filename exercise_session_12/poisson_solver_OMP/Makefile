@@ -1,5 +1,5 @@
 CFLAGS=-O3 -ffast-math -mavx2 -fopenmp
-CC=CC
+CC=g++
 all: init.o io.o jacobi.o main.o main main_argv.o main_argv
 init.o: init.cpp init.h
 	${CC} ${CFLAGS} -c -o init.o init.cpp

@@ -2,9 +2,9 @@
 set -e
 
 cat trump_tweets_*.csv\
-| ./mapper.py \
+| ./mapper3.py \
 | sort \
-| ./reducer.py \
+| ./reducer3.py \
 > local_wordcount.txt
 
 

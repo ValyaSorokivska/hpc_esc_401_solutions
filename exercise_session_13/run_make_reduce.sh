@@ -1,10 +1,11 @@
 #!/bin/bash
 set -e
 
-DATA_DIR="data"   
-
-cat ${DATA_DIR}/* \
+cat trump_tweets_*.csv\
 | ./mapper.py \
 | sort \
 | ./reducer.py \
 > local_wordcount.txt
+
+
+
